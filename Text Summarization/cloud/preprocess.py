@@ -1,6 +1,25 @@
   
 class Preprocessing(object):
-            
+    def process(self, rows, axis):
+        """ 
+        Input: panda series
+        Output with axis for return:
+            # 0 = SumBasic
+            # 1 = SumBasic order
+            # 2 = Sentence length
+            # 3 = Sentence
+        """
+        sentences, processed = self.cleaning(rows)
+        sumbasic, sumbasic_order, frequency = self.sumBasic(sentences, processed)
+        if axis == 0:
+          return sumbasic
+        elif axis == 1:
+          return sumbasic_order
+        elif axis == 2:
+          return frequency
+        elif axis == 3:
+          return sentences
+
     def cleaning(self, rows):
         from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
         from nltk.tokenize import sent_tokenize
@@ -25,23 +44,7 @@ class Preprocessing(object):
         # processed = tokenize cleaned text <list>
         return sentences, processed
 
-    def process(self, rows, axis):
-        """ Axis for return
-            # 0 = SumBasic
-            # 1 = SumBasic order
-            # 2 = Sentence length
-            # 3 = Sentence
-        """
-        sentences, processed = self.cleaning(rows)
-        sumbasic, sumbasic_order, frequency = self.sumBasic(sentences, processed)
-        if axis == 0:
-          return sumbasic
-        elif axis == 1:
-          return sumbasic_order
-        elif axis == 2:
-          return frequency
-        elif axis == 3:
-          return sentences
+    
     
 
     def sumBasic(self, sentences, processed):

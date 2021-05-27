@@ -15,7 +15,6 @@
 """
 print("Content-Type: text/html\n")
 
-
 import pandas as pd
 import tensorflow as tf
 import numpy as np
@@ -23,14 +22,11 @@ import flask
 import sys
 from flask import request, jsonify
 
-
-
 sys.path.append('C:/xampp7/htdocs/Bangkit')
 from preprocess import * # Change this
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-
 
 @app.route('/', methods=['GET'])
 def home():
@@ -74,9 +70,10 @@ def predict():
     # 7. Return the sorted 3 sentences by weight
     flat_text['predict'] = prediction
     flat_text.sort_values(by='predict', inplace=True)
+    flat_text = flat_text.head(3)
     summary = {}
     summary_text = ""
-    for i, e in enumerate(flat_text.iloc[:3]['Sentence']):
+    for i, e in enumerate(flat_text.sort_values(by='Sentence_order')['Sentence']):
         summary_text = summary_text + e +" "
         if i == 0:
             summary['push'] = e
