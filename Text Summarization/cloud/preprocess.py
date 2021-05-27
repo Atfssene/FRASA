@@ -1,17 +1,17 @@
   
-class Preprocessing:
-    def __init__(self):
-        from nltk.tokenize import sent_tokenize, word_tokenize
+class Preprocessing(object):
+            
+    def cleaning(self, rows):
         from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+        from nltk.tokenize import sent_tokenize
         import re
 
+        sentences = []
+        processed = []
         factory = StopWordRemoverFactory()
         stop_words = factory.get_stop_words()
 
-    def cleaning(rows):
-        sentences = []
-        processed = []
-        for row in sent_tokenize(rows['paragraphs']):
+        for row in sent_tokenize(rows):
             sentences.append(sent_tokenize(row))
         sentences = [y for x in sentences for y in x]
         # sentences = tokenize raw paragraph <list>
@@ -25,27 +25,30 @@ class Preprocessing:
         # processed = tokenize cleaned text <list>
         return sentences, processed
 
-    def process(rows, axis, axisa):
+    def process(self, rows, axis):
         """ Axis for return
             # 0 = SumBasic
             # 1 = SumBasic order
             # 2 = Sentence length
+            # 3 = Sentence
         """
-        if axis == 0 or axis == 1:
-            sentences, processed = cleaning(rows)
-            # Calling SumBasic
-            sumbasic, sumbasic_order, frequency = sumBasic(sentences, processed)
-            if axis == 0:
-                return sumbasic
-            elif axis == 1:
-                return sumbasic_order
-            elif axis == 2:
-                return frequency
+        sentences, processed = self.cleaning(rows)
+        sumbasic, sumbasic_order, frequency = self.sumBasic(sentences, processed)
+        if axis == 0:
+          return sumbasic
+        elif axis == 1:
+          return sumbasic_order
+        elif axis == 2:
+          return frequency
+        elif axis == 3:
+          return sentences
+    
 
-    def sorting(e):
-        return e[2]
+    def sumBasic(self, sentences, processed):
+        from nltk.tokenize import word_tokenize
+        def sorting(e):
+            return e[2]
 
-    def sumBasic(sentences, processed):
         # Count the sum weights
         frequency = {}
         for text in processed:
@@ -71,10 +74,10 @@ class Preprocessing:
                         else:
                             scores[i] += frequency[word]
                             sentence_count += 1
-                else:
-                    scores[i] = 0.0000001
-                    sentence_len.append(sentence_count)
-                    sentence_count = 0
+            else:
+                scores[i] = 0.0000001
+            sentence_len.append(sentence_count)
+            sentence_count = 0
 
         ranked_sentences = sorted(([scores[i],i+1,s] for i,s in enumerate(sentences)), reverse=True)
 
@@ -91,5 +94,5 @@ class Preprocessing:
         for i in range(len(sum_bas)):
             SB_weight.append(sum_bas[i][0])
             SB_order.append(sum_bas[i][1])
-        # Just Return 2 list(TextRank weights, TextRank order)
+        # Return 3 list(Sumbasic weights, Sumbasic order, sentence length)
         return SB_weight, SB_order, sentence_len
