@@ -1,0 +1,5 @@
+pandas==1.2.4
+tensorflow==2.5.0
+Sastrawi==1.0.1
+nltk==3.5
+numpy==1.19.5

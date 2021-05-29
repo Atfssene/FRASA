@@ -8,7 +8,7 @@ class Preprocessing(object):
             # 1 = SumBasic order
             # 2 = Sentence length
             # 3 = Sentence
-        """
+        """    
         sentences, processed = self.cleaning(rows)
         sumbasic, sumbasic_order, frequency = self.sumBasic(sentences, processed)
         if axis == 0:
