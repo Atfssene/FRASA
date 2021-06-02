@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.frasa.databinding.FragmentQuestion5Binding
 import com.example.frasa.source.local.Session
+import com.example.frasa.ui.detail.DetailViewModel
 import com.example.frasa.ui.home.HomeActivity
+import com.example.frasa.utils.json.parseJson
 import org.json.JSONObject
 
 class Question5Fragment : Fragment() {
@@ -17,6 +20,11 @@ class Question5Fragment : Fragment() {
     private var _binding: FragmentQuestion5Binding? = null
     private val binding get() = _binding!!
     private lateinit var jsonData: JSONObject
+    private val viewModel: QuestionViewModel by lazy {
+        ViewModelProvider(this,
+            ViewModelProvider.NewInstanceFactory()
+        )[QuestionViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +65,7 @@ class Question5Fragment : Fragment() {
                 put("currentTimeEnd", session.currentTimeEnd)
                 put("score", session.score)
             }
+            viewModel.postScore(jsonData.parseJson())
             val intent = Intent(activity, HomeActivity::class.java)
             startActivity(intent)
         }
