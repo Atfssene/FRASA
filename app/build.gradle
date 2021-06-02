@@ -31,15 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
-    configurations{
-        all{
-            exclude group: "com.android.support", module: "support-core-ui"
-            exclude group: "com.android.support", module: "support-compat"
-        }
-    }
+
 }
 
 dependencies {

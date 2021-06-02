@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Frasa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.summary.SummaryActivity"></activity>
+        <activity android:name=".ui.summary.SummaryActivity">
+        </activity>
         <activity
             android:name=".ui.test.QuestionActivity"
             android:label="@string/reading_test"

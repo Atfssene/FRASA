@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,51 +7,62 @@
     android:orientation="vertical"
     tools:context=".ui.reading.ReadingActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_marginTop="5dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="19sp"
-        android:textColor="@color/black"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/title"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/text1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:padding="10dp"
-        android:layout_below="@id/title">
-        <TextView
-            android:layout_margin="8dp"
-
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/black"
-            android:lineSpacingExtra="5sp"
-            android:textSize="14sp"
-            android:text="@string/text3"
-            />
-    </androidx.cardview.widget.CardView>
+            android:orientation="vertical"
+            android:elevation="20dp">
 
-    <Button
-        android:id="@+id/btn_finish"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/text1"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="@string/finish" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="19sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/title"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:layout_below="@id/title">
+
+                <TextView
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="5sp"
+                    android:textSize="14sp"
+                    android:text="@string/text3"
+                    />
+            </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/btn_finish"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_below="@+id/text1"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/teal_200"
+                android:text="@string/finish" />
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </RelativeLayout>
+

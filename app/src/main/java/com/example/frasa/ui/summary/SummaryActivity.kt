@@ -15,6 +15,7 @@ class SummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_summary)
 
         tv_summary.text = session.summary
+        tv_paragraph.text = session.paragraf
 
         btn_finish.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)

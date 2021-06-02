@@ -37,6 +37,7 @@ class MessagingService : FirebaseMessagingService() {
             withImage = false
         )
         session.summary = data["summary"].toString()
+        session.paragraf = data["paragraph"].toString()
     }
 
 

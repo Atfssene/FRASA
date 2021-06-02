@@ -40,6 +40,10 @@ class Session (context: Context) {
     get() = sp.getString(PREF_SUMMARY,"")
     set(value) = spe.putString(PREF_SUMMARY, value).apply()
 
+    var paragraf: String?
+    get() = sp.getString(PREF_PARAGRAF,"")
+    set(value) = spe.putString(PREF_PARAGRAF, value).apply()
+
 
 
     companion object{
@@ -48,5 +52,6 @@ class Session (context: Context) {
         private const val PREF_TIME_START = "current time start"
         private const val PREF_TIME_END = "current time end"
         private const val PREF_SUMMARY = "summary text"
+        private const val PREF_PARAGRAF = "paragraf"
     }
 }

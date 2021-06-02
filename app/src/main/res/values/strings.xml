@@ -57,5 +57,7 @@
     <string name="sinopsis">Sinopsis</string>
     <string name="dummyText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nisl leo, mollis vitae eros et, venenatis consectetur quam. Quisque blandit lacus quam, a aliquet nibh eleifend sit amet. Duis eleifend nisi leo, eu placerat arcu aliquet eu.</string>
     <string name="subscribe">Subscribe</string>
+    <string name="summary_of_paragraph">Summary of Paragraph</string>
+    <string name="summary_of_e_book">Summary of E-Book</string>
 
 </resources>
