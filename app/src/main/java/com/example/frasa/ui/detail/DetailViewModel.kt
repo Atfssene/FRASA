@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.frasa.domain.model.DataModel
-import com.example.frasa.domain.repository.AppRepository
-import com.example.frasa.domain.repository.AppRepositoryImpl
+import com.example.frasa.domain.repository.AppRepository2
+import com.example.frasa.domain.repository.AppRepositoryImpl2
 import com.example.frasa.source.network.api.ApiClient
-import com.example.frasa.source.network.source.AppDataSource
-import com.example.frasa.source.network.source.RemoteDataSource
+import com.example.frasa.source.network.source.AppDataSource2
+import com.example.frasa.source.network.source.RemoteDataSource2
 import com.example.frasa.utils.DataDummy
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
@@ -17,15 +17,15 @@ import kotlinx.coroutines.launch
 class DetailViewModel : ViewModel() {
     private lateinit var id: String
 
-    private var repository: AppRepository
-    private var dataSource: AppDataSource = RemoteDataSource(ApiClient.apiInstance)
+    private var repository: AppRepository2
+    private var dataSource: AppDataSource2 = RemoteDataSource2(ApiClient.apiInstance2)
 
     private val _paragraph = MutableLiveData<DataModel>()
     val paragraph: LiveData<DataModel>
         get() = _paragraph
 
     init {
-        repository = AppRepositoryImpl(dataSource)
+        repository = AppRepositoryImpl2(dataSource)
     }
 
     private fun getListData(): ArrayList<DataModel> = DataDummy.generateDataDummy() as ArrayList<DataModel>

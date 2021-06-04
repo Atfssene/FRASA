@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.frasa.domain.model.DataModel
 import com.example.frasa.domain.model.ScoreModel
 import com.example.frasa.source.network.api.ApiService
+import com.example.frasa.source.network.api.ApiService2
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -37,32 +38,5 @@ class RemoteDataSource(
         }
     }
 
-    override suspend fun setParagraph(jsonBody: JsonObject): LiveData<DataModel> = coroutineScope {
-        withContext(Dispatchers.IO) {
-            try {
-                val response = api.setParagraph(jsonBody)
 
-                if (response.isSuccessful) {
-                    var dataModel = DataModel()
-
-                    response.body()?.let { data ->
-                        dataModel = DataModel(
-                            id = data.id,
-                            judul = data.judul,
-                            kategori = data.kategori,
-                            penulis = data.penulis,
-                            gambar = data.gambar,
-                            sinopsis = data.sinopsis,
-                            isi = data.isi
-                        )
-                    }
-                    return@withContext MutableLiveData(dataModel)
-                } else {
-                    return@withContext MutableLiveData(DataModel())
-                }
-            } catch (e: Throwable) {
-                return@withContext MutableLiveData(DataModel())
-            }
-        }
-    }
 }
