@@ -24,6 +24,7 @@ class SummaryActivity : AppCompatActivity() {
             if(it.isComplete){
                 val firebaseToken = it.result.toString()
                 Log.d(MessagingService.TAG, "Refreshed token: $firebaseToken")
+                session.token = firebaseToken
             }
         }
 

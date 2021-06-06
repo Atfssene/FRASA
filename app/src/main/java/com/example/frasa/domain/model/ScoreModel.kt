@@ -8,4 +8,5 @@ class ScoreModel (
     var currentTimeStart: String = "",
     var currentTimeEnd: String = "",
     var score: Int = -1,
+    var token: String = ""
 ): Parcelable

@@ -25,7 +25,8 @@ class RemoteDataSource(
                         scoreModel = ScoreModel(
                             currentTimeStart = data.currentTimeStart,
                             currentTimeEnd = data.currentTimeEnd,
-                            score = data.score
+                            score = data.score,
+                            token = data.token
                         )
                     }
                     return@withContext MutableLiveData(scoreModel)

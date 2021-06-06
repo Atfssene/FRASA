@@ -64,6 +64,7 @@ class Question5Fragment : Fragment() {
                 put("currentTimeStart", session.currentTimeStart)
                 put("currentTimeEnd", session.currentTimeEnd)
                 put("score", session.score)
+                put("token", session.token)
             }
             viewModel.postScore(jsonData.parseJson())
             val intent = Intent(activity, HomeActivity::class.java)

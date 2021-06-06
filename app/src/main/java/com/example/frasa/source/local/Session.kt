@@ -44,6 +44,10 @@ class Session (context: Context) {
     get() = sp.getString(PREF_PARAGRAF,"")
     set(value) = spe.putString(PREF_PARAGRAF, value).apply()
 
+    var token: String?
+    get() = sp.getString(PREF_TOKEN, "")
+    set(value) = spe.putString(PREF_TOKEN, value).apply()
+
 
 
     companion object{
@@ -53,5 +57,6 @@ class Session (context: Context) {
         private const val PREF_TIME_END = "current time end"
         private const val PREF_SUMMARY = "summary text"
         private const val PREF_PARAGRAF = "paragraf"
+        private const val PREF_TOKEN = "token"
     }
 }

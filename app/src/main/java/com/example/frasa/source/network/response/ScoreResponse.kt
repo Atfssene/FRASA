@@ -11,5 +11,8 @@ data class ScoreResponse(
 	val currentTimeStart: String,
 
 	@field:SerializedName("currentTimeEnd")
-	val currentTimeEnd: String
+	val currentTimeEnd: String,
+
+	@field:SerializedName("token")
+	val token: String
 )
