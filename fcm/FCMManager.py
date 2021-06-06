@@ -9,8 +9,8 @@ def sendPush(title, msg, registration_token, dataObject=None):
     # See documentation on defining a message payload.
     message = messaging.MulticastMessage(
         notification=messaging.Notification(
-            title='$GOOG up 1.43% on the day',
-            body='$GOOG gained 11.80 points to close at 835.67, up 1.43% on the day.',
+            title=title,
+            body=msg,
         ),
         android=messaging.AndroidConfig(
             ttl=datetime.timedelta(seconds=3600),
