@@ -14,6 +14,10 @@
         android:theme="@style/Theme.Frasa"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.summary.SummaryActivity">
+            <intent-filter>
+                <action android:name="com.example.frasa_TARGET_NOTIFICATION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.test.QuestionActivity"
@@ -33,6 +37,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.home.HomeActivity" />
+        <service
+            android:name=".notification.MessagingService"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

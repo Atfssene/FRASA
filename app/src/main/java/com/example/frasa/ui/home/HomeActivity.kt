@@ -2,16 +2,18 @@ package com.example.frasa.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.SearchView
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.frasa.R
 import com.example.frasa.domain.model.DataModel
+import com.example.frasa.notification.MessagingService
 import com.example.frasa.ui.detail.DetailActivity
 import com.example.frasa.utils.DataAdapter
 import com.example.frasa.utils.DataCallback
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), DataCallback {
@@ -19,6 +21,7 @@ class HomeActivity : AppCompatActivity(), DataCallback {
     private var gridLayoutManager: GridLayoutManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
@@ -32,6 +35,12 @@ class HomeActivity : AppCompatActivity(), DataCallback {
 
         setupRecyclerView(listData)
 
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+//            if(it.isComplete){
+//                val firebaseToken = it.result.toString()
+//                Log.d(MessagingService.TAG, "Refreshed token: $firebaseToken")
+//            }
+//        }
     }
 
     private fun setupRecyclerView(listData: List<DataModel>) {
