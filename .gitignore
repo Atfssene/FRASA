@@ -1,2 +1,4 @@
 
 fcm/serviceAccountKey.json
+*.pyc
+Text Summarization/cloud/google-services.json

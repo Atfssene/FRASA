@@ -1,6 +1,6 @@
 # """
 #     FRASA text summarization model:
-#     1. Get JSON => a paragraph (string)
+#     1. Get a paragraph (string)
 #     2. Convert into dataframe
 #     3. Run preprocessing (cleaning, feature extraction)
 #     4. Flattening data for each sentences
@@ -14,57 +14,34 @@ import pandas as pd
 import tensorflow as tf
 import numpy as np
 import nltk
-nltk.download('punkt')
-from flask import Flask, jsonify, request
+import requests
+import json
+import firebase_admin
 
+nltk.download('punkt')
+
+from flask import Flask, jsonify, request
+from firebase_admin import credentials, messaging
 from preprocess import *
+from customize_text import text_customizer
+
+# firebase_admin.initialize_app(cred)
+default_app = firebase_admin.initialize_app()
+
 app = Flask(__name__)
 
-
-@app.route("/")
-def home():
-    return '''<h1>Welcome to FRASA 2.1</h1>'''
-
-@app.route('/push', methods=['POST'])
-def push():
-    if request.method == 'POST':
-        if not request.is_json:
-            return jsonify({"msg": "Missing JSON in request. Try again."}), 400  
-        paragraf = request.get_json()
-        text = paragraf['paragraph']
-        summary = [
-            { 
-                "push": "Hello push notif!", 
-                "summary": "summary terdiri dari 3 kalimat, cek nanti yo",
-                "paragraf" : text
-            }
-            ]
-        return jsonify(summary)
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    if request.method == 'POST':
-        if not request.is_json:
-            return jsonify({"msg": "Missing JSON in request. Try again."}), 400  
-    
-    paragraf = request.get_json()
-    text = paragraf['paragraph']
-    summary = [
-            { 
-                "push": "Hello push notif!", 
-                "summary": "summary terdiri dari 3 kalimat, cek nanti yo",
-                "paragraf" : text
-            }
-            ]
-    return jsonify(summary)
-
-    # 1. Get JSON => a paragraph (string)
-    #    JSON structure =>  { "paragraph": "example of a paragraph with many sentences"}
-    text = request.get_json()
-    
-    # 2. Convert into dataframe
-    if text.values() != "":
-        text = pd.DataFrame(text.values(), columns=['paragraph'])
+# === START OF MACHINE LEARNING PROCESS ===
+# @app.route('/predict_only', methods=['POST'])
+def predict(text):
+    # if request.method is not None and request.method == 'POST':
+    #     if not request.is_json:
+    #         return jsonify({"msg": "Missing JSON in request. Try again."}), 400
+    #     # 1. Get a paragraph (string)
+    #     text = request.get_json()
+    summary ={"summary": text}
+    if text != "":
+        # 2. Convert into dataframe
+        text = pd.DataFrame(summary.values(), columns=['paragraph'])
 
         # 3. Run preprocessing (cleaning, feature extraction)
         Pre = Preprocessing()
@@ -92,20 +69,71 @@ def predict():
         flat_text['predict'] = prediction
         flat_text.sort_values(by='predict', inplace=True)
         flat_text = flat_text.head(3)
-        summary = {}
+        
         summary_text = ""
         for i, e in enumerate(flat_text.sort_values(by='Sentence_order')['Sentence']):
             summary_text = summary_text + e +" "
             if i == 0:
+                # push = first sentence from summary (for push notification body)
                 summary['push'] = e
+        # summary = 3 sentences (for data)
         summary['summary'] = summary_text.strip()
-
-        return jsonify(summary)
     else:
-        return jsonify(text.values())
+        summary['summary'] = text
 
+    return summary
+# === END OF MACHINE LEARNING PROCESS ===
 
+@app.route("/")
+def home():
+    return '''<h1>Welcome to FRASA 2.1</h1>'''
 
+@app.route('/predict', methods=['POST'])
+def process_predict_to_fcm():
+    if request.method == 'POST':
+        if not request.is_json:
+            return jsonify({"msg": "Missing JSON in request. Try again."}), 400  
+    
+
+    # Take all text in table frasa_db.content from received title 
+    paragraph = request.get_json()
+
+    url = "https://frasadb-j4jaf2mpiq-uc.a.run.app/"
+    # get paragraf result
+    title = "resources/content?title="+paragraph['judul']
+    text = requests.get(url+title).json()
+
+    # FOR PROTOTYE ONLY: Take token, wpm, and score from table frasa_db.user
+    user = requests.get(url+"/resources/user").json()
+
+    # first paragraf for predict the summary, customized_text for deliver to user
+    first_paragraf, customized_text = text_customizer(text, user['wpm'], user['score'])
+    summary = predict(first_paragraf)
+
+    # POST to FCM
+    payload={
+            "to": user['token'],
+            "notification": {
+                            "title": "Konten langgananmu menunggu!",
+                            "body": summary['push'],
+                            "click_action" : "com.example.frasa_TARGET_NOTIFICATION"
+                            },
+            "data":{
+                    # "paragraf": customized_text,
+                    "paragraf": "yoi mamen",
+                    "summary": "vontoh"
+
+                    # "summary": summary['summary']
+                }
+    }
+    headers = {
+        "Authorization":"key=secret",
+        "Content-Type":"application/json"
+        }
+    
+    url = "https://fcm.googleapis.com/fcm/send"
+    req = requests.post(url, data=json.dumps(payload), headers=headers)
+    return("Successfully send: "+str(req.json()))
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
