@@ -46,7 +46,7 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         btn_subscribe.setOnClickListener {
-            jsonData.put("paragraph", result.isi)
+            jsonData.put("judul", result.judul)
             viewModel.postParagraph(jsonData.parseJson())
             Toast.makeText(this,"SUBSCRIBED!", Toast.LENGTH_SHORT).show()
         }
