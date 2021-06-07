@@ -1,5 +1,6 @@
 package com.example.frasa.ui.test
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.frasa.App.Companion.session
 import com.example.frasa.databinding.FragmentQuestion1Binding
-import com.example.frasa.source.local.Session
+import kotlinx.android.synthetic.main.activity_question.*
 
 
 class Question1Fragment : Fragment() {
@@ -17,7 +18,7 @@ class Question1Fragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentQuestion1Binding.inflate(inflater, container, false)
         return binding.root

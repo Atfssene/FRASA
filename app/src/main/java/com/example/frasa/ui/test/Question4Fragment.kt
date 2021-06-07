@@ -1,5 +1,6 @@
 package com.example.frasa.ui.test
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,6 +48,8 @@ class Question4Fragment : Fragment() {
             else if (binding.radio4.isChecked){
                 Toast.makeText(context,binding.radio4.text.toString(), Toast.LENGTH_SHORT).show()
             }
+            val intent = Intent(activity, Question4Fragment::class.java)
+            startActivity(intent)
         }
     }
 }

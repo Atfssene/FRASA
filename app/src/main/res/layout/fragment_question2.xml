@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/tosca"
+    android:background="@drawable/background_question"
     android:orientation="vertical"
     tools:context=".ui.reading.ReadingActivity">
 
@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textSize="25sp"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-light"
         android:text="@string/tquestion2"/>
