@@ -23,7 +23,23 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return '''<h1>Welcome to FRASA</h1>'''
+    return '''<h1>Welcome to FRASA 2.1</h1>'''
+
+@app.route('/push', methods=['POST'])
+def push():
+    if request.method == 'POST':
+        if not request.is_json:
+            return jsonify({"msg": "Missing JSON in request. Try again."}), 400  
+        paragraf = request.get_json()
+        text = paragraf['paragraph']
+        summary = [
+            { 
+                "push": "Hello push notif!", 
+                "summary": "summary terdiri dari 3 kalimat, cek nanti yo",
+                "paragraf" : text
+            }
+            ]
+        return jsonify(summary)
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -31,6 +47,17 @@ def predict():
         if not request.is_json:
             return jsonify({"msg": "Missing JSON in request. Try again."}), 400  
     
+    paragraf = request.get_json()
+    text = paragraf['paragraph']
+    summary = [
+            { 
+                "push": "Hello push notif!", 
+                "summary": "summary terdiri dari 3 kalimat, cek nanti yo",
+                "paragraf" : text
+            }
+            ]
+    return jsonify(summary)
+
     # 1. Get JSON => a paragraph (string)
     #    JSON structure =>  { "paragraph": "example of a paragraph with many sentences"}
     text = request.get_json()
@@ -76,6 +103,9 @@ def predict():
         return jsonify(summary)
     else:
         return jsonify(text.values())
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
