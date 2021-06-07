@@ -25,7 +25,7 @@ from firebase_admin import credentials
 from preprocess import *
 from customize_text import text_customizer
 
-cred = credentials.Certificate("google-services.json")
+cred = credentials.Certificate("##########################")
 firebase_admin.initialize_app(cred)
 # default_app = firebase_admin.initialize_app()
 
