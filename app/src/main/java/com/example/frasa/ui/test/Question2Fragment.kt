@@ -1,5 +1,6 @@
 package com.example.frasa.ui.test
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,16 @@ class Question2Fragment : Fragment() {
     private lateinit var session : Session
     private var _binding: FragmentQuestion2Binding? = null
     private val binding get() = _binding!!
+    private lateinit var onClickBoardingListener: OnClickBoardingListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            onClickBoardingListener = context as OnClickBoardingListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("${this.javaClass.simpleName} must implement OnClickBoardingListener")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +45,7 @@ class Question2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSave.setOnClickListener {
+            onClickBoardingListener.onButtonClicked(it)
             if (binding.radio1.isChecked){
                 session.score++
                 Toast.makeText(context,binding.radio1.text.toString(), Toast.LENGTH_SHORT).show()

@@ -46,6 +46,11 @@ class Session (context: Context) {
     get() = sp.getString(PREF_TOKEN, "")
     set(value) = spe.putString(PREF_TOKEN, value).apply()
 
+    var isFirstTime: Boolean
+    get() = sp.getBoolean(PREF_FIRST, true)
+    set(value) = spe.putBoolean(PREF_FIRST, value).apply()
+
+
 
 
     companion object{
@@ -56,5 +61,6 @@ class Session (context: Context) {
         private const val PREF_SUMMARY = "summary text"
         private const val PREF_PARAGRAF = "paragraf"
         private const val PREF_TOKEN = "token"
+        private const val PREF_FIRST = "first"
     }
 }

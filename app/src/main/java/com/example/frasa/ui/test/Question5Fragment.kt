@@ -1,5 +1,6 @@
 package com.example.frasa.ui.test
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,6 +25,16 @@ class Question5Fragment : Fragment() {
         ViewModelProvider(this,
             ViewModelProvider.NewInstanceFactory()
         )[QuestionViewModel::class.java]
+    }
+    private lateinit var onClickBoardingListener: OnClickBoardingListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            onClickBoardingListener = context as OnClickBoardingListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("${this.javaClass.simpleName} must implement OnClickBoardingListener")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +71,7 @@ class Question5Fragment : Fragment() {
         }
 
         binding.btnFinish.setOnClickListener {
+            onClickBoardingListener.onButtonClicked(it)
             jsonData.apply {
                 put("currentTimeStart", session.currentTimeStart)
                 put("currentTimeEnd", session.currentTimeEnd)
@@ -67,8 +79,7 @@ class Question5Fragment : Fragment() {
                 put("token", session.token)
             }
             viewModel.postScore(jsonData.parseJson())
-            val intent = Intent(activity, HomeActivity::class.java)
-            startActivity(intent)
+
         }
     }
 }

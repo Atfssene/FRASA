@@ -14,9 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="80dp"
         android:elevation="20dp">
-
 
     <TextView
         android:id="@+id/title"
@@ -61,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="5sp"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -73,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="5sp"
                 android:textSize="14sp"
                 android:layout_toRightOf="@id/iv_paragraph"
@@ -115,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="5sp"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -127,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:lineSpacingExtra="5sp"
                 android:textSize="14sp"
                 android:layout_toRightOf="@id/iv_summary"

@@ -1,5 +1,6 @@
 package com.example.frasa.ui.test
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,16 @@ import kotlinx.android.synthetic.main.activity_question.*
 class Question1Fragment : Fragment() {
     private var _binding: FragmentQuestion1Binding? = null
     private val binding get() = _binding!!
+    private lateinit var onClickBoardingListener: OnClickBoardingListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            onClickBoardingListener = context as OnClickBoardingListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("${this.javaClass.simpleName} must implement OnClickBoardingListener")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +39,7 @@ class Question1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSave.setOnClickListener {
+            onClickBoardingListener.onButtonClicked(it)
             if (binding.radio1.isChecked){
                 session.score++
                 Toast.makeText(context,binding.radio1.text.toString(), Toast.LENGTH_SHORT).show()
@@ -41,6 +53,7 @@ class Question1Fragment : Fragment() {
             else if (binding.radio4.isChecked){
                 Toast.makeText(context,binding.radio4.text.toString(), Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 }

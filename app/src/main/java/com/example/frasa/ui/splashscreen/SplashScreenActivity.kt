@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.frasa.App.Companion.session
 import com.example.frasa.databinding.ActivitySplashScreenBinding
 import com.example.frasa.notification.MessagingService
+import com.example.frasa.ui.home.HomeActivity
 import com.example.frasa.ui.reading.ReadingActivity
 import com.google.firebase.messaging.FirebaseMessaging
 import java.text.SimpleDateFormat
@@ -24,8 +25,15 @@ class SplashScreenActivity : AppCompatActivity() {
             val currentTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
             session.currentTimeStart = currentTime
 
-            val intent = Intent(this, ReadingActivity::class.java)
+//            val intent = Intent(this, ReadingActivity::class.java)
+//            startActivity(intent)
+            val intent = if (session.isFirstTime){
+                Intent(this, ReadingActivity::class.java)
+            }else{
+                Intent(this, HomeActivity::class.java)
+            }
             startActivity(intent)
+            finish()
         }
         FirebaseMessaging.getInstance().token.addOnCompleteListener {
             if(it.isComplete){
