@@ -16,7 +16,7 @@ interface ApiService {
     @POST("/insert_score")
     suspend fun setScore (@Body jsonBody: JsonObject?): Response<ScoreResponse>
 
-    @GET("/paragraph")
+    @GET("/resources/paragraph")
     suspend fun getParagraf(): Response<ParagrafResponse>
 
 }
