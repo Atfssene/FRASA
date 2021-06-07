@@ -48,8 +48,6 @@ class Question3Fragment : Fragment() {
             else if (binding.radio4.isChecked){
                 Toast.makeText(context,binding.radio4.text.toString(), Toast.LENGTH_SHORT).show()
             }
-            val intent = Intent(activity, Question4Fragment::class.java)
-            startActivity(intent)
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.frasa.source.network.source
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.frasa.domain.model.DataModel
+import com.example.frasa.domain.model.ParagraphModel
 import com.example.frasa.domain.model.ScoreModel
 import com.example.frasa.source.network.api.ApiService
 import com.example.frasa.source.network.api.ApiService2
@@ -35,6 +36,29 @@ class RemoteDataSource(
                 }
             } catch (e: Throwable) {
                 return@withContext MutableLiveData(ScoreModel())
+            }
+        }
+    }
+
+    override suspend fun getParagraf(): LiveData<ParagraphModel> = coroutineScope {
+        withContext(Dispatchers.IO) {
+            try {
+                val response = api.getParagraf()
+                if (response.isSuccessful) {
+                    var paragraphModel = ParagraphModel()
+
+                    response.body()?.let { data ->
+                        paragraphModel = ParagraphModel(
+                            paragraph = data.paragraph,
+                            summary = data.summary
+                        )
+                    }
+                    return@withContext MutableLiveData(paragraphModel)
+                } else {
+                    return@withContext MutableLiveData(ParagraphModel())
+                }
+            } catch (e: Throwable) {
+                return@withContext MutableLiveData(ParagraphModel())
             }
         }
     }

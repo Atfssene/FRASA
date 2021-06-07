@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Frasa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.summary.SummaryActivity">
+        <activity android:name=".ui.summary.SummaryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="com.example.frasa_TARGET_NOTIFICATION" />
                 <category android:name="android.intent.category.DEFAULT" />

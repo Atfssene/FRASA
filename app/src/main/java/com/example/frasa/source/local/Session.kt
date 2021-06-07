@@ -10,8 +10,6 @@ import org.json.JSONObject
 
 class Session (context: Context) {
 
-
-
     private val sp: SharedPreferences by lazy {
         context.getSharedPreferences(SESSION_NAME, Context.MODE_PRIVATE)
     }
