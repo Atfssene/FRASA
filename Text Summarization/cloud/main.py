@@ -133,7 +133,7 @@ def process_predict_to_fcm():
                 }
     }
     headers = {
-        "Authorization":"key=AAAATg_u_Uo:APA91bF4oH5RZ_u-MrsWDkuzPRZArBztd5jkU5mZdfa0A-tg-D0wMtf2psVLFhMz30SPQQxSZe701Nd0F-zsJ_fbh0ZDg3gxdn1gK7pKtnlwTd5PQ5mRUy0t2hdbjE5CkHLiHIjZaqKy",
+        "Authorization":"key=#####################################################",
         "Content-Type":"application/json"
         }
     
