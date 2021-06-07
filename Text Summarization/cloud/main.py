@@ -21,23 +21,18 @@ import firebase_admin
 nltk.download('punkt')
 
 from flask import Flask, jsonify, request
-from firebase_admin import credentials, messaging
+from firebase_admin import credentials
 from preprocess import *
 from customize_text import text_customizer
 
-# firebase_admin.initialize_app(cred)
-default_app = firebase_admin.initialize_app()
+cred = credentials.Certificate("google-services.json")
+firebase_admin.initialize_app(cred)
+# default_app = firebase_admin.initialize_app()
 
 app = Flask(__name__)
 
 # === START OF MACHINE LEARNING PROCESS ===
-# @app.route('/predict_only', methods=['POST'])
 def predict(text):
-    # if request.method is not None and request.method == 'POST':
-    #     if not request.is_json:
-    #         return jsonify({"msg": "Missing JSON in request. Try again."}), 400
-    #     # 1. Get a paragraph (string)
-    #     text = request.get_json()
     summary ={"summary": text}
     if text != "":
         # 2. Convert into dataframe
@@ -109,6 +104,21 @@ def process_predict_to_fcm():
     # first paragraf for predict the summary, customized_text for deliver to user
     first_paragraf, customized_text = text_customizer(text, user['wpm'], user['score'])
     summary = predict(first_paragraf)
+    unique_fcm = str(user['wpm']) + customized_text[:5] + str(user['score']) + user['token'][:5]
+    
+    # POST to SQL server
+    # FOR PROTOTYE ONLY: Insert to SQL = unique_fcm, paragraph, summary, and first(to pinpoint zero summary)
+    payload={
+            "unique_fcm": unique_fcm,
+            "summary": customized_text,
+            "paragraph": unique_fcm,
+            "first": 1,
+    }
+    headers = {
+        "Content-Type":"application/json"
+        }
+    req = requests.post(url+"/insert_paragraph", data=json.dumps(payload), headers=headers)
+    print(req.json())
 
     # POST to FCM
     payload={
@@ -119,21 +129,28 @@ def process_predict_to_fcm():
                             "click_action" : "com.example.frasa_TARGET_NOTIFICATION"
                             },
             "data":{
-                    # "paragraf": customized_text,
-                    "paragraf": "yoi mamen",
-                    "summary": "vontoh"
-
-                    # "summary": summary['summary']
+                    "unique_fcm": unique_fcm,
                 }
     }
     headers = {
-        "Authorization":"key=secret",
+        "Authorization":"key=AAAATg_u_Uo:APA91bF4oH5RZ_u-MrsWDkuzPRZArBztd5jkU5mZdfa0A-tg-D0wMtf2psVLFhMz30SPQQxSZe701Nd0F-zsJ_fbh0ZDg3gxdn1gK7pKtnlwTd5PQ5mRUy0t2hdbjE5CkHLiHIjZaqKy",
         "Content-Type":"application/json"
         }
     
     url = "https://fcm.googleapis.com/fcm/send"
     req = requests.post(url, data=json.dumps(payload), headers=headers)
+    print(req.json())
+
     return("Successfully send: "+str(req.json()))
 
+@app.route('/predict_only', methods=['POST'])
+def predict_only():
+    if request.method == 'POST':
+        if not request.is_json:
+            return jsonify({"msg": "Missing JSON in request. Try again."}), 400
+    text = request.get_json()
+    summary = predict(text.values())
+    return jsonify(summary)
+    
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
