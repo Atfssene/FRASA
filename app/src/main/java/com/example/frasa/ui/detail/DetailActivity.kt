@@ -48,7 +48,7 @@ class DetailActivity : AppCompatActivity() {
         btn_subscribe.setOnClickListener {
             jsonData.put("judul", result.judul)
             viewModel.postParagraph(jsonData.parseJson())
-            Toast.makeText(this,"Subscribed, wait for notification later!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Sudah berlangganan, tunggu notifikasi nanti ya!", Toast.LENGTH_SHORT).show()
         }
 
         observeData()

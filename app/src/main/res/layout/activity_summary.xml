@@ -24,7 +24,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:fontFamily="sans-serif-light"
-            android:text="Hello, \nWelcome Back!"
+            android:text="Halo, \nSelamat datang kembali!"
             android:textColor="@color/black"
             android:textSize="23sp"
             android:textStyle="bold" />

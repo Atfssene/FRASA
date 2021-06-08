@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FRASA</string>
-    <string name="tv_splash">Start transforming habits and release your superpower!</string>
-    <string name="try_now">Try Now</string>
+    <string name="tv_splash">Perjalananmu melepas kekuatan <i>superpower knowledge</i> dimulai dari sini!</string>
+    <string name="try_now">Ayo!</string>
     <string name="title">The Lay of Thrym</string>
     <string name="text1"><b>D</b>alam kisah mitologi Nordik yang berjudul The Lay of Thrym mengisahkan suatu pagi Thor bangun dari tidurnya dan mendapati bahwa palunya hilang. Ini membuatnya begitu marah sehingga kedua tangannya gemetar dan jenggotnya bergoyang. Dengan ditemani saudaranya, Loki, dia pergi mendatangi Freyja untuk menanyakan apakah Loki boleh meminjam sayap Freyja agar dia dapat terbang ke Jotunheim, negeri para raksasa, dan mencari tahu apakah memang mereka yang telah mencuri palu Thor.
         \n\nDi Jotunheim Loki bertemu dengan Thrym, raja para raksasa, yang membual bahwa dia telah menyembunyikan palu itu tujuh lapisan di bawah bumi. Dan dia menambahkan bahwa para dewa tidak akan mendapatkan kembali palu itu kecuali jika Freyja diserahkan kepada Thrym sebagai mempelainya.\n
@@ -15,24 +15,24 @@
         \nKetika Thrym mengangkat tudung sang mempelai untuk menciumnya, dia terkejut mendapati dirinya berhadapan dengan mata Thor yang membara. Sekali lagi Loki menyelamatkan situasi dengan menjelaskan bahwa sang mempelai tidak tidur selama seminggu sebab dia demikian bahagianya menghadapi pernikahan itu. Setelah mengetahui hal ini, Thrym memerintahkan agar palu itu dikeluarkan dan ditaruh di pangkuan sang mempelai selama berlangsungnya upacara pernikahan.\n
         \nTawa Thor membahana ketika dia diberi palu. Setelah tak perlu lagi menyamar, Thor pun membuka samarannya dan menyerang para raksasa. Seketika aula upacara berubah menjadi tempat penghabisan para raksasa. Thor menghabisi para raksasa dan seluruh keluarga mereka. Dan dengan demikian kisah penyanderaan yang mengerikan itu berakhir bahagia.
 </string>
-    <string name="finish">Finish</string>
-    <string name="tquestion1">Question 1/5</string>
+    <string name="finish">Selesai</string>
+    <string name="tquestion1">Pertanyaan 1/5</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reading_test">Reading Test</string>
-    <string name="select">Select an answer</string>
+    <string name="select">Pilih jawaban sesuai dari teks barusan kamu baca</string>
     <string name="question1">Kenapa Thor bangun pada suatu pagi dan marah?</string>
     <string name="rb11">Dia tidak menemukan palunya</string>
     <string name="rb12">Loki mengendap-endap ke kamarnya semalam</string>
     <string name="rb13">Heimdall memberikan gagasan yang dibencinya</string>
     <string name="rb14">Raksasa Jotunheim mengancam perang</string>
-    <string name="tquestion2">Question 2/5</string>
+    <string name="tquestion2">Pertanyaan 2/5</string>
     <string name="question2">Siapakah Thrym?</string>
     <string name="rb21">Penguasa Asgard</string>
     <string name="rb22">Raja Jotunheim</string>
     <string name="rb23">Raksasa dewa</string>
     <string name="rb24">Suami Freyja</string>
-    <string name="tquestion3">Question 3/5</string>
+    <string name="tquestion3">Pertanyaan 3/5</string>
     <string name="question3">Kenapa Freyja marah pada Loki</string>
     <string name="rb31">Palu Mjolnir menghilang dan Loki memfitnah dia pelakunya</string>
     <string name="rb32">Sebagai dewi kesuburan ia tidak bisa menikah</string>
@@ -43,21 +43,21 @@
     <string name="rb42">Melahap seekor sapi, 7 salmon, dan 3 barel bir</string>
     <string name="rb43">Melahap seekor kambing, 8 salmon, dan 3 barel bir</string>
     <string name="rb44">Melahap seekor sapi, 8 salmon, dan 3 barel bir</string>
-    <string name="tquestion4">Question 4/5</string>
-    <string name="tquestion5">Question 5/5</string>
+    <string name="tquestion4">Pertanyaan 4/5</string>
+    <string name="tquestion5">Pertanyaan 5/5</string>
     <string name="question5">Apa yang dikatakan Loki sehingga Thrym memerintahkan palu Thor dibawa ke pengantin wanitanya?</string>
     <string name="rb51">Sang mempelai sudah lama mendambakan pernikahan tersebut</string>
     <string name="rb52">Sang mempelai tidak makan karena tidak sabar menunggu</string>
     <string name="rb53">Sang mempelai meminta mas kawin</string>
     <string name="rb54">Sang mempelai tidak tidur karena bahagia</string>
-    <string name="save">Save</string>
+    <string name="save">Simpan</string>
     <string name="dummyCategory">Romance</string>
     <string name="dummyTitle">Lorem ipsum dolor sit amet consectetur Lorem ipsum</string>
     <string name="dummyBy">by Lorem Ipsum</string>
     <string name="sinopsis">Sinopsis</string>
     <string name="dummyText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nisl leo, mollis vitae eros et, venenatis consectetur quam. Quisque blandit lacus quam, a aliquet nibh eleifend sit amet. Duis eleifend nisi leo, eu placerat arcu aliquet eu.</string>
-    <string name="subscribe">Subscribe</string>
-    <string name="summary_of_paragraph">Your subscription today</string>
-    <string name="summary_of_e_book">Summary</string>
+    <string name="subscribe">Langganan</string>
+    <string name="summary_of_paragraph">Konten hari ini</string>
+    <string name="summary_of_e_book">Ringkasan</string>
 
 </resources>
