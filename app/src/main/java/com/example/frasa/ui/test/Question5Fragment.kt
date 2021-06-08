@@ -1,7 +1,6 @@
 package com.example.frasa.ui.test
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.frasa.databinding.FragmentQuestion5Binding
 import com.example.frasa.source.local.Session
-import com.example.frasa.ui.detail.DetailViewModel
-import com.example.frasa.ui.home.HomeActivity
 import com.example.frasa.utils.json.parseJson
 import org.json.JSONObject
 

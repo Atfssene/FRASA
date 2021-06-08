@@ -2,11 +2,9 @@ package com.example.frasa.source.network.source
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.frasa.domain.model.DataModel
 import com.example.frasa.domain.model.ParagraphModel
 import com.example.frasa.domain.model.ScoreModel
 import com.example.frasa.source.network.api.ApiService
-import com.example.frasa.source.network.api.ApiService2
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope

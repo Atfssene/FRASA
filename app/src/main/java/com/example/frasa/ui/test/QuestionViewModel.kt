@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.frasa.domain.model.DataModel
 import com.example.frasa.domain.model.ScoreModel
 import com.example.frasa.domain.repository.AppRepository
 import com.example.frasa.domain.repository.AppRepositoryImpl

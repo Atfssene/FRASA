@@ -1,6 +1,5 @@
 package com.example.frasa.source.network.api
 
-import com.example.frasa.source.network.response.AppResponse
 import com.example.frasa.source.network.response.ParagrafResponse
 import com.example.frasa.source.network.response.ScoreResponse
 import com.google.gson.JsonObject

@@ -2,11 +2,6 @@ package com.example.frasa.source.local
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.frasa.domain.repository.AppRepository
-import com.example.frasa.source.network.api.ApiClient
-import com.example.frasa.source.network.source.AppDataSource
-import com.example.frasa.source.network.source.RemoteDataSource
-import org.json.JSONObject
 
 class Session (context: Context) {
 

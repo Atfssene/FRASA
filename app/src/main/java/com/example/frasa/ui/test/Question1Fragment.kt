@@ -1,7 +1,6 @@
 package com.example.frasa.ui.test
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.frasa.App.Companion.session
 import com.example.frasa.databinding.FragmentQuestion1Binding
-import kotlinx.android.synthetic.main.activity_question.*
 
 
 class Question1Fragment : Fragment() {

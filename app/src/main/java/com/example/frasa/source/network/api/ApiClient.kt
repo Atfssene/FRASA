@@ -1,7 +1,5 @@
 package com.example.frasa.source.network.api
 
-import android.content.Context
-import com.example.frasa.App
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

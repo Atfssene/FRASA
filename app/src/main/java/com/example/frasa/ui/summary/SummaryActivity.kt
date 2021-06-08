@@ -1,18 +1,14 @@
 package com.example.frasa.ui.summary
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.frasa.App.Companion.session
 import com.example.frasa.R
-import com.example.frasa.domain.model.ParagraphModel
 import com.example.frasa.notification.MessagingService
 import com.example.frasa.ui.home.HomeActivity
-import com.example.frasa.ui.test.QuestionActivity
-import com.example.frasa.ui.test.QuestionViewModel
-import com.example.frasa.utils.json.parseJson
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_summary.*
 

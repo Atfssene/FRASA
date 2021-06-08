@@ -1,16 +1,15 @@
 package com.example.frasa.ui.test
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.frasa.App.Companion.session
 import com.example.frasa.R
 import com.example.frasa.ui.adapter.ViewPagerAdapter
 import com.example.frasa.ui.home.HomeActivity
-import kotlinx.android.synthetic.main.activity_question.*
 
 
 class QuestionActivity : AppCompatActivity(), OnClickBoardingListener {
