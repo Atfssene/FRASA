@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FRASA</string>
-    <string name="tv_splash">an Application for you that has trouble reading book, especially e-books.</string>
+    <string name="tv_splash">Start transforming habits and release your superpower!</string>
     <string name="try_now">Try Now</string>
     <string name="title">The Lay of Thrym</string>
     <string name="text1"><b>D</b>alam kisah mitologi Nordik yang berjudul The Lay of Thrym mengisahkan suatu pagi Thor bangun dari tidurnya dan mendapati bahwa palunya hilang. Ini membuatnya begitu marah sehingga kedua tangannya gemetar dan jenggotnya bergoyang. Dengan ditemani saudaranya, Loki, dia pergi mendatangi Freyja untuk menanyakan apakah Loki boleh meminjam sayap Freyja agar dia dapat terbang ke Jotunheim, negeri para raksasa, dan mencari tahu apakah memang mereka yang telah mencuri palu Thor.
@@ -57,7 +57,7 @@
     <string name="sinopsis">Sinopsis</string>
     <string name="dummyText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nisl leo, mollis vitae eros et, venenatis consectetur quam. Quisque blandit lacus quam, a aliquet nibh eleifend sit amet. Duis eleifend nisi leo, eu placerat arcu aliquet eu.</string>
     <string name="subscribe">Subscribe</string>
-    <string name="summary_of_paragraph">Summary of Paragraph</string>
-    <string name="summary_of_e_book">Summary of E-Book</string>
+    <string name="summary_of_paragraph">Your subscription today</string>
+    <string name="summary_of_e_book">Summary</string>
 
 </resources>
