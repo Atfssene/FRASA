@@ -27,7 +27,6 @@ from customize_text import text_customizer
 
 cred = credentials.Certificate("##########################")
 firebase_admin.initialize_app(cred)
-# default_app = firebase_admin.initialize_app()
 
 app = Flask(__name__)
 
@@ -93,9 +92,9 @@ def process_predict_to_fcm():
     # Take all text in table frasa_db.content from received title 
     paragraph = request.get_json()
 
-    url = "https://frasadb-j4jaf2mpiq-uc.a.run.app/"
+    url = "https://frasadb-j4jaf2mpiq-uc.a.run.app"
     # get paragraf result
-    title = "resources/content?title="+paragraph['judul']
+    title = "/resources/content?title="+paragraph['judul']
     text = requests.get(url+title).json()
 
     # FOR PROTOTYE ONLY: Take token, wpm, and score from table frasa_db.user
@@ -110,22 +109,22 @@ def process_predict_to_fcm():
     # FOR PROTOTYE ONLY: Insert to SQL = unique_fcm, paragraph, summary, and first(to pinpoint zero summary)
     payload={
             "unique_fcm": unique_fcm,
-            "summary": customized_text,
-            "paragraph": unique_fcm,
+            "summary": summary['summary'],
+            "paragraph": customized_text,
             "first": 1,
     }
     headers = {
         "Content-Type":"application/json"
         }
     req = requests.post(url+"/insert_paragraph", data=json.dumps(payload), headers=headers)
-    print(req.json())
+    print(req)
 
     # POST to FCM
     payload={
             "to": user['token'],
             "notification": {
                             "title": "Konten langgananmu menunggu!",
-                            "body": summary['push'],
+                            "body": summary['push'] + "(baca lebih lanjut...)",
                             "click_action" : "com.example.frasa_TARGET_NOTIFICATION"
                             },
             "data":{
@@ -133,7 +132,7 @@ def process_predict_to_fcm():
                 }
     }
     headers = {
-        "Authorization":"key=#####################################################",
+        "Authorization":"########################################################################################################",
         "Content-Type":"application/json"
         }
     
