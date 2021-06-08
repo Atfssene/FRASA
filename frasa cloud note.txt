@@ -1,0 +1,49 @@
+to-do:
+- perbaikin koneksi vm page #clear
+- koneksi api utnuk menerima json #clear
+- database untuk akun user #clear
+- andorid to database #clear
+- google cloud for image to user #clear
+- dikirim lwt json hh mm ss #clear
+____________________________________________________________________________________________	
+Steps:
+1. Create VM
+frasa-1
+region us-central1 iowa
+zone us-central1-a
+N1 - 8 CPU 30 GB
+
+2. Activate API:
+
+App Engine Admin API
+IAP API
+DNS API
+Service Networking API
+firebase strorage
+firebase apps check
+firebase app distribution
+
+[install tensorflow]
+sudo apt install python3-dev python3-pip python3-venv
+
+[tf serving]
+echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | sudo tee /etc/apt/sources.list.d/tensorflow-serving.list && \
+curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | sudo apt-key add -
+
+[tf serving install]
+apt-get update && apt-get install tensorflow-model-server
+
+[Networking]
+enable IAP API
+enable DNS API
+Enable Service Networking API
+Edit frasa vm firewall
+
+[Monitoring]
+uptime check http instance single frasa-1  minute
+
+[Debug Process]
+gcloud builds submit --tag gcr.io/x-oxygen-313312/frasa_db
+gcloud run deploy --image gcr.io/x-oxygen-313312/frasa_db --platform managed  --allow-unauthenticated --add-cloudsql-instances x-oxygen-313312:us-central1:frasa-db
+https://frasa-j4jaf2mpiq-uc.a.run.app/
+frasa-proses
